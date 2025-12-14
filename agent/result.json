@@ -1,0 +1,28 @@
+{
+  "liveUrl": "https://generated-app-demo.vercel.app",
+  "repo": null,
+  "zip": null,
+  "summary": {
+    "idea": "Build a todo app with tags and deadlines",
+    "plan": {
+      "projectName": "generated-app",
+      "frontend": "Next.js",
+      "backend": "Next API routes",
+      "database": "SQLite",
+      "fileStructure": [
+        "pages/index.tsx",
+        "pages/api/items.ts",
+        "components/ItemList.tsx"
+      ],
+      "apiSpecs": [
+        {
+          "route": "/api/items",
+          "methods": [
+            "GET",
+            "POST"
+          ]
+        }
+      ]
+    }
+  }
+}

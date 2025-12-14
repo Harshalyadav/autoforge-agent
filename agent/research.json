@@ -1,0 +1,24 @@
+{
+  "idea": "Build a todo app.",
+  "useCases": [
+    "MVP",
+    "demo"
+  ],
+  "features": [
+    "CRUD",
+    "Search"
+  ],
+  "stack": {
+    "frontend": "Next.js",
+    "backend": "Next API",
+    "db": "SQLite"
+  },
+  "schema": {
+    "items": [
+      "id",
+      "title",
+      "content",
+      "createdAt"
+    ]
+  }
+}

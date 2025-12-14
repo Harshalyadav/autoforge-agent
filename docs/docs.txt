@@ -1,0 +1,98 @@
+1. Node / Agent Commands
+▶ Start the agent runner
+node runner.js
+
+
+Expected:
+
+agent-runner listening on port 3001
+
+▶ Test agent status
+curl http://localhost:3001/status
+
+▶ Trigger agent steps manually
+curl -X POST "http://localhost:3001/run?step=research"
+curl -X POST "http://localhost:3001/run?step=plan"
+curl -X POST "http://localhost:3001/run?step=generate"
+
+🔹 2. Next.js (UI) Commands
+▶ Install dependencies
+npm install
+
+▶ Run Next.js app
+npm run dev
+
+
+App runs at:
+
+http://localhost:3000
+
+▶ Build Next.js (later)
+npm run build
+
+🔹 3. Kestra (MOST IMPORTANT)
+▶ Start Kestra (Windows – correct way)
+docker run -it -p 8080:8080 --add-host=host.docker.internal:host-gateway kestra/kestra:latest server local
+
+
+Kestra UI:
+
+http://localhost:8080
+
+▶ Trigger Kestra flow via API
+curl -X POST http://localhost:8080/api/v1/main/executions/autoforge/build_app
+
+▶ Check Kestra can reach agent (debug)
+docker run --rm -it --add-host=host.docker.internal:host-gateway curlimages/curl curl http://host.docker.internal:3001/status
+
+🔹 4. Docker Basics (Debugging)
+▶ List running containers
+docker ps
+
+▶ Stop a container
+docker stop <container_id>
+
+▶ Remove container
+docker rm <container_id>
+
+🔹 5. File / Debug Commands
+▶ Create idea file manually
+echo {"idea":"Build a todo app"} > agent/current_idea.json
+
+▶ View agent files
+type agent\current_idea.json
+type agent\status.json
+type agent\result.json
+
+🔹 6. Git (Optional – Day 5)
+▶ Initialize repo
+git init
+
+▶ Add & commit
+git add .
+git commit -m "Initial AutoForge agent"
+
+▶ Push to GitHub
+git branch -M main
+git remote add origin <repo-url>
+git push -u origin main
+
+🔹 7. Vercel (Optional – Deployment)
+▶ Login
+npx vercel login
+
+▶ Deploy
+npx vercel
+
+🔹 8. Common URLs (Remember These)
+Service	URL
+Next.js UI	http://localhost:3000
+
+Kestra UI	http://localhost:8080
+
+Agent API	http://localhost:3001
+✅ MOST USED COMMANDS (Quick List)
+npm run dev
+node runner.js
+docker run -it -p 8080:8080 --add-host=host.docker.internal:host-gateway kestra/kestra:latest server local
+curl http://localhost:3001/status

@@ -1,0 +1,29 @@
+id: build_app
+namespace: autoforge
+revision: 2
+
+tasks:
+  - id: main
+    type: io.kestra.plugin.core.flow.AllowFailure
+    tasks:
+
+      - id: research
+        type: io.kestra.core.tasks.scripts.Bash
+        commands:
+          - echo "== research step =="
+          - curl -s -X POST http://host.docker.internal:3001/run?step=research -H "Content-Type: application/json" -d '{}' > research_out.json
+          - cat research_out.json
+
+      - id: planning
+        type: io.kestra.core.tasks.scripts.Bash
+        commands:
+          - echo "== planning step =="
+          - curl -s -X POST http://host.docker.internal:3001/run?step=plan -H "Content-Type: application/json" -d '{}' > plan_out.json
+          - cat plan_out.json
+
+      - id: generate
+        type: io.kestra.core.tasks.scripts.Bash
+        commands:
+          - echo "== generate step =="
+          - curl -s -X POST http://host.docker.internal:3001/run?step=generate -H "Content-Type: application/json" -d '{}' > generate_out.json
+          - cat generate_out.json
